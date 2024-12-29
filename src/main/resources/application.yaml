@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: customerdata
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/achieversoft
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#server:
+#  servlet:
+#    contextPath: /ecommapp
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+
