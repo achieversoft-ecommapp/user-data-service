@@ -4,7 +4,21 @@ pipeline {
         maven 'jenkins-maven'
     }
     stages{
-        stage('build customer-data-service'){
+        stage('build parent-pom'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/release/25.01']], extensions: [],
+                            userRemoteConfigs: [[url: 'https://github.com/achieversoft-ecommapp/parent-pom']]])
+                bat 'mvn clean install'
+            }
+        }
+		stage('build common-app-library'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/release/25.01']], extensions: [],
+                            userRemoteConfigs: [[url: 'https://github.com/achieversoft-ecommapp/common-app-library']]])
+                bat 'mvn clean install'
+            }
+        }
+		stage('build customer-data-service'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/release/25.01']], extensions: [],
                             userRemoteConfigs: [[url: 'https://github.com/achieversoft-ecommapp/customer-data-service']]])
