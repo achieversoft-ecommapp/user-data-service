@@ -23,7 +23,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.achieversoft.ecommapp</groupId>
-			<artifactId>common-app-library</artifactId>
+			<artifactId>commonapplibrary</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
