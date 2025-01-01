@@ -2,6 +2,7 @@ spring:
   application:
     name: customerdata
   jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -11,10 +12,9 @@ spring:
     password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+
 #server:
 #  servlet:
 #    contextPath: /ecommapp
-#springdoc:
-#  swagger-ui:
-#    path: /swagger-ui.html
+
 
