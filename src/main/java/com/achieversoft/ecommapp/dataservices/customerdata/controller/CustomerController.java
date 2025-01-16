@@ -5,7 +5,6 @@ import com.achieversoft.ecommapp.dataservices.customerdata.common.exception.Cust
 import com.achieversoft.ecommapp.dataservices.customerdata.entity.Customer;
 import com.achieversoft.ecommapp.dataservices.customerdata.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +33,6 @@ import static com.achieversoft.ecommapp.dataservices.customerdata.common.constan
  */
 @RestController
 @RequestMapping("/customer")
-@Slf4j
 public class CustomerController {
 
     @Autowired

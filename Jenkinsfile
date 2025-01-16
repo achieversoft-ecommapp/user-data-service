@@ -40,13 +40,21 @@ pipeline {
                                         }
                                     }
                                 }
-         stage('Deploy to k8s'){
+         stage('Deploy db to k8s'){
                     steps{
                         script{
-                            kubernetesDeploy (configs: 'deployment.yaml',kubeconfigId: 'k8configpwd')
+                            kubernetesDeploy (configs: 'mysql-deployment.yaml',kubeconfigId: 'k8configpwd')
                                }
                            }
                        }
+
+        stage('Deploy app to k8s'){
+                            steps{
+                                script{
+                                    kubernetesDeploy (configs: 'deployment.yaml',kubeconfigId: 'k8configpwd')
+                                       }
+                                   }
+                               }
 
 
 
