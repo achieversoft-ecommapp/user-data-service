@@ -2,7 +2,7 @@ spring:
   application:
     name: customerdata
   datasource:
-    url: jdbc:mysql://localhost:3306/achieversoft
+    url: jdbc:mysql://localhost:3307/achieversoft
     username: root
     password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver

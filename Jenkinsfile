@@ -20,7 +20,7 @@ pipeline {
         }
 		stage('build customer-data-service'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/release/25.01']], extensions: [],
+                checkout([$class: 'GitSCM', branches: [[name: '*/release/25.02']], extensions: [],
                             userRemoteConfigs: [[url: 'https://github.com/achieversoft-ecommapp/customer-data-service']]])
                 bat 'mvn clean install'
             }
