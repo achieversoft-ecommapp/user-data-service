@@ -1,9 +1,9 @@
-package com.achieversoft.ecommapp.dataservices.customerdata.controller;
+package com.achieversoft.ecommapp.customerdata.controller;
 
 import com.achieversoft.ecommapp.commonapplibrary.response.MonoResponseHelper;
-import com.achieversoft.ecommapp.dataservices.customerdata.common.exception.CustomerDataException;
-import com.achieversoft.ecommapp.dataservices.customerdata.entity.Customer;
-import com.achieversoft.ecommapp.dataservices.customerdata.service.CustomerService;
+import com.achieversoft.ecommapp.customerdata.common.exception.CustomerDataException;
+import com.achieversoft.ecommapp.customerdata.entity.Customer;
+import com.achieversoft.ecommapp.customerdata.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,20 +18,19 @@ import java.util.List;
 import static com.achieversoft.ecommapp.commonapplibrary.constants.GlobalConstants.HTTP_STATUS_CODE_200;
 import static com.achieversoft.ecommapp.commonapplibrary.constants.GlobalConstants.SUCCESS_STATUS_MESSAGE;
 import static com.achieversoft.ecommapp.commonapplibrary.constants.GlobalConstants.SUCCESS_STAUS;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.DEL_ALL_CUST_DETAILS;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.DEL_CUST_DETAILS_BY_ID;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.GET_ALL_CUST_DETAILS;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.GET_CUST_DETAILS_BY_ID;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.SAVE_CUST_DETAILS;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.SERVICE_NAME;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.UPDATE_CUST_DETAILS;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.DEL_ALL_CUST_DETAILS;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.DEL_CUST_DETAILS_BY_ID;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.GET_ALL_CUST_DETAILS;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.GET_CUST_DETAILS_BY_ID;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.SAVE_CUST_DETAILS;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.SERVICE_NAME;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.UPDATE_CUST_DETAILS;
 
 
 /**
  * The type Customer controller.
  */
 @RestController
-@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired

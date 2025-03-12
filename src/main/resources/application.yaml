@@ -1,3 +1,7 @@
+server:
+  servlet:
+    contextPath: /ecommapp/customerdata
+
 spring:
   application:
     name: customerdata
@@ -17,8 +21,6 @@ spring:
         ddl-auto: none
 
 
-#server:
-#  servlet:
-#    contextPath: /ecommapp
+
 
 

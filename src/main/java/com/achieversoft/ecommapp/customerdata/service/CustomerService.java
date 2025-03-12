@@ -1,10 +1,10 @@
-package com.achieversoft.ecommapp.dataservices.customerdata.service;
+package com.achieversoft.ecommapp.customerdata.service;
 
-import com.achieversoft.ecommapp.dataservices.customerdata.common.exception.CustomerDataException;
-import com.achieversoft.ecommapp.dataservices.customerdata.entity.Customer;
+import com.achieversoft.ecommapp.customerdata.common.exception.CustomerDataException;
+import com.achieversoft.ecommapp.customerdata.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.achieversoft.ecommapp.dataservices.customerdata.repository.CustomerRepository;
+import com.achieversoft.ecommapp.customerdata.repository.CustomerRepository;
 
 import java.util.List;
 
