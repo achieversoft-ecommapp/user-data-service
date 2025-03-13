@@ -1,4 +1,4 @@
-package com.achieversoft.ecommapp.dataservices.customerdata;
+package com.achieversoft.ecommapp.customerdata;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

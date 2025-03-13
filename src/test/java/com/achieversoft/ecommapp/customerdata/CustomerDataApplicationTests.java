@@ -1,4 +1,4 @@
-package com.achieversoft.ecommapp.dataservices.customerdata;
+package com.achieversoft.ecommapp.customerdata;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

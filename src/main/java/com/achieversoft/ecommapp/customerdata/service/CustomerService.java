@@ -1,12 +1,15 @@
-package com.achieversoft.ecommapp.dataservices.customerdata.service;
+package com.achieversoft.ecommapp.customerdata.service;
 
-import com.achieversoft.ecommapp.dataservices.customerdata.common.exception.CustomerDataException;
-import com.achieversoft.ecommapp.dataservices.customerdata.entity.Customer;
+import com.achieversoft.ecommapp.customerdata.common.exception.CustomerDataException;
+import com.achieversoft.ecommapp.customerdata.entity.Customer;
+import com.achieversoft.ecommapp.customerdata.entity.CustomerProductMapping;
+import com.achieversoft.ecommapp.customerdata.repository.CustomerProductMappingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.achieversoft.ecommapp.dataservices.customerdata.repository.CustomerRepository;
+import com.achieversoft.ecommapp.customerdata.repository.CustomerRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The type Customer service.
@@ -16,6 +19,8 @@ public class CustomerService {
 
     @Autowired
     private CustomerRepository repository;
+    @Autowired
+    private CustomerProductMappingRepository mappingRepository;
 
     /**
      * Gets customer by id.
@@ -36,18 +41,6 @@ public class CustomerService {
      */
     public List<Customer> getCustomers() throws CustomerDataException {
         return repository.findAll();
-    }
-
-    /**
-     * Save customer string.
-     *
-     * @param list the list
-     * @return the string
-     * @throws CustomerDataException the customer data exception
-     */
-    public String saveCustomer(List<Customer> list) throws CustomerDataException {
-        int count=repository.saveAll(list).size();
-        return "Saved "+count+" Records";
     }
 
     /**
@@ -83,6 +76,30 @@ public class CustomerService {
     public String deleteCustomer(String id) throws CustomerDataException {
         repository.delete(Customer.builder().customerId(id).build());
         return "Customer Id "+id+" Deleted Successfully.";
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws CustomerDataException
+     */
+    public List<CustomerProductMapping> getProductsForCustomer(String id) throws CustomerDataException {
+        return mappingRepository.findAll().stream()
+                .filter(data->id.equalsIgnoreCase(data.getCustomerId()))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws CustomerDataException
+     */
+    public List<CustomerProductMapping> getCustomersForProduct(String id) throws CustomerDataException {
+        return mappingRepository.findAll().stream()
+                .filter(data->id.equalsIgnoreCase(data.getProductId()))
+                .collect(Collectors.toList());
     }
 
 

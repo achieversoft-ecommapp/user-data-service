@@ -1,4 +1,4 @@
-package com.achieversoft.ecommapp.dataservices.customerdata.entity;
+package com.achieversoft.ecommapp.customerdata.entity;
 
 
 import jakarta.persistence.Entity;

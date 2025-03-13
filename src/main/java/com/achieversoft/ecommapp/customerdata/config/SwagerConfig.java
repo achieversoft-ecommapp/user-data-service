@@ -1,4 +1,4 @@
-package com.achieversoft.ecommapp.dataservices.customerdata.config;
+package com.achieversoft.ecommapp.customerdata.config;
 
 
 

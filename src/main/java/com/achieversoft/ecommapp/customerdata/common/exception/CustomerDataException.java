@@ -1,4 +1,4 @@
-package com.achieversoft.ecommapp.dataservices.customerdata.common.exception;
+package com.achieversoft.ecommapp.customerdata.common.exception;
 
 import lombok.Data;
 

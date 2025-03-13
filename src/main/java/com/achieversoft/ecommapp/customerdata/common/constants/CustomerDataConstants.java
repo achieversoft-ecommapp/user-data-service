@@ -1,4 +1,4 @@
-package com.achieversoft.ecommapp.dataservices.customerdata.common.constants;
+package com.achieversoft.ecommapp.customerdata.common.constants;
 
 import lombok.NoArgsConstructor;
 

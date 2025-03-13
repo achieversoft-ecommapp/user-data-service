@@ -1,9 +1,9 @@
-package com.achieversoft.ecommapp.dataservices.customerdata.controller;
+package com.achieversoft.ecommapp.customerdata.controller;
 
 import com.achieversoft.ecommapp.commonapplibrary.response.MonoResponseHelper;
-import com.achieversoft.ecommapp.dataservices.customerdata.common.exception.CustomerDataException;
-import com.achieversoft.ecommapp.dataservices.customerdata.entity.Customer;
-import com.achieversoft.ecommapp.dataservices.customerdata.service.CustomerService;
+import com.achieversoft.ecommapp.customerdata.common.exception.CustomerDataException;
+import com.achieversoft.ecommapp.customerdata.entity.Customer;
+import com.achieversoft.ecommapp.customerdata.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,20 +19,19 @@ import java.util.List;
 import static com.achieversoft.ecommapp.commonapplibrary.constants.GlobalConstants.HTTP_STATUS_CODE_200;
 import static com.achieversoft.ecommapp.commonapplibrary.constants.GlobalConstants.SUCCESS_STATUS_MESSAGE;
 import static com.achieversoft.ecommapp.commonapplibrary.constants.GlobalConstants.SUCCESS_STAUS;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.DEL_ALL_CUST_DETAILS;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.DEL_CUST_DETAILS_BY_ID;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.GET_ALL_CUST_DETAILS;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.GET_CUST_DETAILS_BY_ID;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.SAVE_CUST_DETAILS;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.SERVICE_NAME;
-import static com.achieversoft.ecommapp.dataservices.customerdata.common.constants.CustomerDataConstants.UPDATE_CUST_DETAILS;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.DEL_ALL_CUST_DETAILS;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.DEL_CUST_DETAILS_BY_ID;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.GET_ALL_CUST_DETAILS;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.GET_CUST_DETAILS_BY_ID;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.SAVE_CUST_DETAILS;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.SERVICE_NAME;
+import static com.achieversoft.ecommapp.customerdata.common.constants.CustomerDataConstants.UPDATE_CUST_DETAILS;
 
 
 /**
  * The type Customer controller.
  */
 @RestController
-@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired
@@ -71,30 +70,12 @@ public class CustomerController {
     }
 
     /**
-     * Save customer response entity.
-     *
-     * @param list the list
-     * @return the response entity
-     */
-    @PostMapping("/details")
-    public Object saveCustomer(@RequestBody List<Customer> list){
-        try{
-            return MonoResponseHelper.buildAPIResponse(Boolean.TRUE,HTTP_STATUS_CODE_200,SUCCESS_STATUS_MESSAGE,
-                    service.saveCustomer(list),SAVE_CUST_DETAILS,SUCCESS_STAUS,SERVICE_NAME);
-
-        }catch (Exception e){
-            throw new CustomerDataException(e.getMessage(),SAVE_CUST_DETAILS);
-        }
-
-    }
-
-    /**
      * Save or update customer response entity.
      *
      * @param list the list
      * @return the response entity
      */
-    @PutMapping("/details")
+    @PutMapping("/details/updt")
     public Object saveOrUpdateCustomer(@RequestBody List<Customer> list){
         try{
             return MonoResponseHelper.buildAPIResponse(Boolean.TRUE,HTTP_STATUS_CODE_200,SUCCESS_STATUS_MESSAGE,
@@ -112,7 +93,7 @@ public class CustomerController {
      * @param id the id
      * @return the response entity
      */
-    @PostMapping("/details/delete/{id}")
+    @PostMapping("/details/dlt/{id}")
     public Object deleteCustomer(@PathVariable String id){
         try{
             return MonoResponseHelper.buildAPIResponse(Boolean.TRUE,HTTP_STATUS_CODE_200,SUCCESS_STATUS_MESSAGE,
@@ -128,7 +109,7 @@ public class CustomerController {
      *
      * @return the response entity
      */
-    @PostMapping("/details/delete/all")
+    @PostMapping("/details/dlt/all")
     public Object deleteAllCustomer(){
         try{
             return MonoResponseHelper.buildAPIResponse(Boolean.TRUE,HTTP_STATUS_CODE_200,SUCCESS_STATUS_MESSAGE,
@@ -139,6 +120,40 @@ public class CustomerController {
 
     }
 
+
+    /**
+     * Get customer by id response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
+    @GetMapping("/details/productsforcustomer/{id}")
+    @Operation(description = "Product id list by customer ids")
+    public Object getProductsForCustomer(@PathVariable String id){
+        try{
+            return MonoResponseHelper.buildAPIResponse(Boolean.TRUE,HTTP_STATUS_CODE_200,SUCCESS_STATUS_MESSAGE,
+                    service.getProductsForCustomer(id),GET_CUST_DETAILS_BY_ID,SUCCESS_STAUS,SERVICE_NAME);
+        }catch (Exception e){
+            throw new CustomerDataException(e.getMessage(),GET_CUST_DETAILS_BY_ID);
+        }
+    }
+
+    /**
+     * Get customer by id response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
+    @GetMapping("/details/customersforproduct/{id}")
+    @Operation(description = "Customer id lis by product ids")
+    public Object getCustomersForProduct(@PathVariable String id){
+        try{
+            return MonoResponseHelper.buildAPIResponse(Boolean.TRUE,HTTP_STATUS_CODE_200,SUCCESS_STATUS_MESSAGE,
+                    service.getCustomersForProduct(id),GET_CUST_DETAILS_BY_ID,SUCCESS_STAUS,SERVICE_NAME);
+        }catch (Exception e){
+            throw new CustomerDataException(e.getMessage(),GET_CUST_DETAILS_BY_ID);
+        }
+    }
 
 
 
