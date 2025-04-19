@@ -1,0 +1,87 @@
+server:
+  port: 8082
+  servlet:
+    contextPath: /userdata
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    hostname: localhost
+#    leaseRenewalIntervalInSeconds: 10
+#    statusPageUrlPath: /swagger-ui/index.html
+#    metadataMap:
+#      instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+
+spring:
+  application:
+    name: user-data-service
+#  sleuth:
+#    sampler:
+#      probability: 1.0 # Adjust sampling rate in production
+#  zipkin:
+#    base-url: ${SPRING_ZIPKIN_BASE_URL:http://localhost:9411/}
+  config:
+    import: ${SPRING_CONFIG_IMPORT:optional:configserver:http://localhost:8888}
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommapp
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        ddl-auto: none
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+
+
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      userService:
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        eventConsumerBufferSize: 10
+        registerHealthIndicator: true
+  retry:
+    instances:
+      remittance-service:
+        maxAttempts: 3
+        waitDuration: 1s
+  timelimiter:
+    instances:
+      remittance-service:
+        timeoutDuration: 5s
+        cancelRunningFuture: true
+
+
+
+
+
+
+
+
+
+
+
+
+
